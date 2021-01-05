@@ -61,6 +61,17 @@
                     <div class="alert alert-danger" *ngIf="pwd.invalid && pwd.touched">
                         Password is required...
                     </div>
+
+                    <!-- Laguages -->
+                    <div class="form-group" [class.has-error]="lang.invalid && lang.touched">
+                        <label class="control-label">Password</label>
+                        <!--                         
+
+                         -->
+                    </div>
+                    <div class="alert alert-danger" *ngIf="lang.invalid && lang.touched">
+                        Password is required...
+                    </div>
                     <br>
 
                     <!-- <button type="submit" class="btn btn-success" (click)="myConsole()">Submit</button> -->
