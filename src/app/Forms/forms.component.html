@@ -3,13 +3,73 @@
         Employee Form
     </div>
     <div class="panel-body">
-        <form class="form-group">
-            <div>
-                <label>First Name</label>
-                <input type="text" class="form-control">
+        <div class="row">
+            <div class="col col-md-6">
+                <form #form="ngForm">
+                    <!-- First Name -->
+                    <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
+                        <label class="control-label">First Name</label>
+                        <input type="text" class="form-control" name="firstname"
+                                [ngModel]="myUser.firstname"
+                                (ngModelChange)="firstNameUpper($event)"
+                                required
+                                #firstName="ngModel"                        
+                        >
+                    </div>
+                    <div class="alert alert-danger" *ngIf="firstName.invalid && firstName.touched">
+                        First Name is required...
+                    </div>
+        
+                    <!-- <div>
+                        {{ firstName.invalid }}
+                        {{ firstName.className }}
+                    </div> -->
+                    
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label class="control-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastname"
+                                [ngModel]="myUser.lastname"
+                                (ngModelChange)="lastNameUpper($event)"
+                                #lastName="ngModel"                        
+                        >
+                    </div>
+        
+                    <!-- eMail -->
+                    <div class="form-group" [class.has-error]="eMail.invalid && eMail.touched">
+                        <label class="control-label">Email ID</label>
+                        <input type="text" class="form-control" name="email"
+                                [(ngModel)]="myUser.email"
+                                required
+                                pattern="[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,5}$"
+                                #eMail="ngModel"
+                        >
+                    </div>
+                    <div class="alert alert-danger" *ngIf="eMail.invalid && eMail.touched">
+                        Valid Email Id is required...
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group" [class.has-error]="pwd.invalid && pwd.touched">
+                        <label class="control-label">Password</label>
+                        <input type="text" class="form-control" name="firstName"
+                                [(ngModel)]="myUser.password"
+                                required
+                                #pwd="ngModel"                        
+                        >
+                    </div>
+                    <div class="alert alert-danger" *ngIf="pwd.invalid && pwd.touched">
+                        Password is required...
+                    </div>
+                    <br>
+
+                    <!-- <button type="submit" class="btn btn-success" (click)="myConsole()">Submit</button> -->
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
             </div>
-            <br>
-            <button type="submit" class="btn btn-success">Submit</button>
-        </form>
+            <div class="col col-md-6 text-center">
+                Employee Details Form 
+            </div>
+        </div>
     </div>
 </div>
