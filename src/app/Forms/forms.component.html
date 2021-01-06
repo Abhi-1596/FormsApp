@@ -5,7 +5,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col col-md-6">
-                <form #form="ngForm">
+                <form #form="ngForm" (submit)="sunmitForm(form)">
                     <!-- First Name -->
                     <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
                         <label class="control-label">First Name</label>
@@ -52,34 +52,40 @@
                     <!-- Password -->
                     <div class="form-group" [class.has-error]="pwd.invalid && pwd.touched">
                         <label class="control-label">Password</label>
-                        <input type="text" class="form-control" name="firstName"
+                        <input type="password" class="form-control" name="password"
                                 [(ngModel)]="myUser.password"
                                 required
-                                #pwd="ngModel"                        
+                                minlength="5"
+                                #pwd="ngModel"
                         >
                     </div>
                     <div class="alert alert-danger" *ngIf="pwd.invalid && pwd.touched">
-                        Password is required...
+                        Minimum lenght of password id 5 characters...
                     </div>
 
-                    <!-- Laguages -->
-                    <div class="form-group" [class.has-error]="lang.invalid && lang.touched">
-                        <label class="control-label">Password</label>
-                        <!--                         
+                    <!-- Coding Language -->
+                    <div class="form-group" [class.has-error]="hasCodeLangError">
+                        <label class="control-label">Coding Language</label>
+                        <select name="codeLang" class="form-control" [(ngModel)]="myUser.codeLang" (blur)="validateCodeLang($event)">
+                            <option value="default">Select Language</option>
+                            <option *ngFor="let lang of languages">
+                                {{ lang }}
+                            </option>
+                        </select>
+                    </div>
 
-                         -->
+                    <div class="alert alert-danger" *ngIf="hasCodeLangError">
+                        Minimum lenght of password id 5 characters...
                     </div>
-                    <div class="alert alert-danger" *ngIf="lang.invalid && lang.touched">
-                        Password is required...
-                    </div>
+
                     <br>
 
                     <!-- <button type="submit" class="btn btn-success" (click)="myConsole()">Submit</button> -->
                     <button type="submit" class="btn btn-success">Submit</button>
                 </form>
             </div>
-            <div class="col col-md-6 text-center">
-                Employee Details Form 
+            <div class="col col-md-6 text-center" id="display">
+                
             </div>
         </div>
     </div>
