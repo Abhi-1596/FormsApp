@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserFormService } from '../Services/userForm.service';
 import { IUser } from './forms.model';
 
 @Component({
@@ -13,6 +14,8 @@ export class FormsComponent {
     hasCodeLangError: boolean = false;
 
     myUser = new IUser('', '', '', '', '');
+
+    constructor(private userFormService: UserFormService) {}
 
     myConsole() {
         console.log(this.myUser.firstname);
@@ -42,6 +45,8 @@ export class FormsComponent {
 
     sunmitForm(form: NgForm): void {
         console.log(form.value);
+
+        this.userFormService.employeeForm(form.value).subscribe((res) => console.log("Data Responce Captured"));
 
         document.getElementById('display').innerHTML = '<p>First Name :\t' + form.value.firstname +
                                                         '</p><p>Last Name :\t' + form.value.lastname +

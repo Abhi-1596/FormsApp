@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "FirstName": "Abhilash",
+      "LastName": "Mishra",
+      "eMail_Id": "abhilash.mishra@gmail.com"
+    },
+    {
+      "id": 2,
+      "FirstName": "Abhinav Pranjal",
+      "LastName": "Rai",
+      "eMail_Id": "abhinav.p.rai@gmail.com"
+    },
+    {
+      "id": 3,
+      "FirstName": "Arpit",
+      "LastName": "Mittal",
+      "eMail_Id": "arpit.mittal@gmail.com"
+    },
+    {
+      "id": 4,
+      "FirstName": "Sravan",
+      "LastName": "Kumar",
+      "eMail_Id": "g.sravan.kumar@gmail.com"
+    }
+  ],
+  "hotels": []
+}
